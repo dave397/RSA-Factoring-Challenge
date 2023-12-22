@@ -3,6 +3,7 @@
 import sys
 import time
 
+
 def factorize_num(arg):
     for num in range(2, int(arg ** 0.5) + 1):
         if arg % num == 0:
@@ -14,9 +15,9 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: factors <file>")
         exit()
-    
+
     called_file = sys.argv[1]
-    
+
     try:
         with open(called_file, "r") as f:
             lines = f.readlines()
@@ -25,13 +26,13 @@ if __name__ == "__main__":
         exit()
 
     s_time = time.time()
-    
+
     for line in lines:
         num = int(line.strip())
         fac = factorize_num(num)
         if fac:
             print("{} = {} * {}".format(num, fac[1], fac[0]))
-        
+
         if time.time() - s_time > 5:
             print("Time limit exceeded")
             exit()
